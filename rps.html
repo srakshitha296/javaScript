@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS</title>
+</head>
+
+<body>
+    <button onclick="
+
+        const machineMove = computerMove();
+        let result = '';
+
+        if(machineMove === 'Rock')
+            result = 'Tie';
+        else if(machineMove === 'Paper')
+            result = 'You Lose';
+        else
+            result = 'You Won';
+        
+
+        ">Rock</button>
+    <button>Paper</button>
+    <button>Scissor</button>
+
+    <script>
+        function computerMove() {
+
+            const number = Math.random();
+            let machineMove = '';
+
+            if (number >= 0 && number < 1 / 3)
+                machineMove = 'Rock';
+            else if (number >= 1 / 3 && number < 2 / 3)
+                machineMove = 'Paper';
+            else
+                machineMove = 'Scissors';
+
+            return machineMove;
+        }
+    </script>
+</body>
+
+</html>
