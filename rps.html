@@ -22,6 +22,8 @@
     score.tie = 0;
     localStorage.removeItem('score');
     updatescore();
+    document.querySelector('.js-result').innerHTML = '';
+    document.querySelector('.js-moves').innerHTML = '';
     ">Reset</button>
 
     <script>
@@ -85,8 +87,7 @@
             updatescore();
 
             document.querySelector('.js-result').innerHTML = result;
-            document.querySelector('.js-moves').innerHTML = `You : ${player}
-            Machine : ${machineMove}`;
+            document.querySelector('.js-moves').innerHTML = `You ${player} -  ${machineMove} Machine`;
 
             //             alert(`You : ${player}
             // Machine : ${machineMove}
