@@ -8,24 +8,89 @@
 </head>
 
 <body>
+    <button onclick="play('Rock')">Rock</button>
+    <button onclick="play('Paper')">Paper</button>
+    <button onclick="play('Scissor')">Scissor</button>
+
+    <p class="js-result"></p>
+    <p class="js-score"></p>
+
     <button onclick="
-
-        const machineMove = computerMove();
-        let result = '';
-
-        if(machineMove === 'Rock')
-            result = 'Tie';
-        else if(machineMove === 'Paper')
-            result = 'You Lose';
-        else
-            result = 'You Won';
-        
-
-        ">Rock</button>
-    <button>Paper</button>
-    <button>Scissor</button>
+    score.wins = 0;
+    score.losses = 0;
+    score.tie = 0;
+    localStorage.removeItem('score');
+    updatescore();
+    ">Reset</button>
 
     <script>
+
+        let score = JSON.parse(localStorage.getItem('score')) || { wins: 0, losses: 0, tie: 0 };
+
+        updatescore();
+        diaplayResult();
+
+
+        /*
+        if (!score) {
+            score = {
+                wins: 0,
+                losses: 0,
+                tie: 0
+            }
+        }
+        */
+
+        function play(player) {
+            const machineMove = computerMove();
+            let result = '';
+
+            if (player === 'Rock') {
+
+                if (machineMove === 'Rock')
+                    result = 'Tie';
+                else if (machineMove === 'Paper')
+                    result = 'You Lose';
+                else
+                    result = 'You Won';
+
+            } else if (player === 'Paper') {
+
+                if (machineMove === 'Paper')
+                    result = 'Tie';
+                else if (machineMove === 'Scissor')
+                    result = 'You Lose';
+                else
+                    result = 'You Won';
+
+            } else {
+
+                if (machineMove === 'Scissor')
+                    result = 'Tie';
+                else if (machineMove === 'Rock')
+                    result = 'You Lose';
+                else
+                    result = 'You Won';
+            }
+
+            if (result === 'You Won')
+                score.wins++;
+            else if (result === 'You Lose')
+                score.losses++;
+            else
+                score.tie++;
+
+            localStorage.setItem('score', JSON.stringify(score));
+            updatescore();
+
+            document.querySelector('.js-result').innerHTML = result;
+
+            //             alert(`You : ${player}
+            // Machine : ${machineMove}
+            // ${result}
+            // Wins : ${score.wins} Losses : ${score.losses} Tie : ${score.tie}`);
+        }
+
         function computerMove() {
 
             const number = Math.random();
@@ -36,10 +101,16 @@
             else if (number >= 1 / 3 && number < 2 / 3)
                 machineMove = 'Paper';
             else
-                machineMove = 'Scissors';
+                machineMove = 'Scissor';
 
             return machineMove;
         }
+
+        function updatescore() {
+            document.querySelector('.js-score').innerHTML = `Wins : ${score.wins} Losses : ${score.losses} Tie : ${score.tie}`;
+        }
+
+
     </script>
 </body>
 
