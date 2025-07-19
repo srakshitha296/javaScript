@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All in one</title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        .subscribe-button {
+            border: none;
+            background-color: black;
+            color: white;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+
+        .is-subscribed {
+            background-color: gray;
+            color: rgba(240, 240, 240);
+        }
+
+        .cost-input {
+            font-size: 15px;
+            padding: 10px;
+        }
+
+        .calculate-button {
+            border: none;
+            background-color: green;
+            color: white;
+            font-size: 15px;
+            padding: 12px 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>YouTube Subscribe button</h2>
+    <button onclick="subscribe()" class="js-subscribe-button subscribe-button"> Subscribe </button>
+
+    <h2>Amazon Shipping Calculator</h2>
+    <p>Orders under $40 = +$10 shipping.</p>
+    <p">Orders over $40 = FREE shipping.</p>
+        <input class="js-cost-input cost-input" onkeydown="handleCostKeydown(event)
+        " placeholder="Cost of order">
+        <button class="js-calculate calculate-button" onclick="
+    calculateTotal();
+    ">Calculate</button>
+        <p class="js-total-cost"></p>
+
+        <h2>Rock Paper Scissors</h2>
+        <a href="./rps.html">Click here</a>
+
+</body>
+
+
+<script>
+    function subscribe() {
+        const buttonElement = document.querySelector('.js-subscribe-button');
+        if (buttonElement.innerText === 'Subscribe') {
+            buttonElement.innerHTML = 'Subscribed';
+            buttonElement.classList.add('is-subscribed')
+
+        }
+        else {
+            buttonElement.innerHTML = 'Subscribe';
+            buttonElement.classList.remove('is-subscribed')
+        }
+    }
+
+    function calculateTotal() {
+        const inputElement = document.querySelector('.js-cost-input');
+        // console.log(inputElement);
+        let cost = Number(inputElement.value);
+        // console.log(cost);
+        if (cost === 0){
+            cost = 0;
+        }
+        else if (cost < 40) {
+            cost += 10;
+        }
+        document.querySelector('.js-total-cost').innerHTML = `$${cost}`;
+    }
+
+    function handleCostKeydown(event) {
+        if (event.key === 'Enter') {
+            calculateTotal();
+        }
+    }
+
+
+</script>
+
+</body>
+
+</html>
