@@ -13,6 +13,7 @@
     <button onclick="play('Scissor')">Scissor</button>
 
     <p class="js-result"></p>
+    <p class="js-moves"></p>
     <p class="js-score"></p>
 
     <button onclick="
@@ -84,6 +85,8 @@
             updatescore();
 
             document.querySelector('.js-result').innerHTML = result;
+            document.querySelector('.js-moves').innerHTML = `You : ${player}
+            Machine : ${machineMove}`;
 
             //             alert(`You : ${player}
             // Machine : ${machineMove}
