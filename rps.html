@@ -5,54 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RPS</title>
-    <style>
-        body {
-            background-color: black;
-            color: white;
-            font-family: Arial;
-        }
-
-        .title {
-            font-size: 30px;
-            font-weight: bold;
-        }
-
-        .move-icon {
-            height: 50px;
-        }
-
-        .move-button {
-            background-color: transparent;
-            border: 3px solid white;
-            width: 120px;
-            height: 120px;
-            border-radius: 60px;
-            margin-right: 10px;
-            cursor: pointer;
-        }
-
-        .result {
-            font-size: 25px;
-            font-weight: bold;
-            margin-top: 50px;
-        }
-
-        .score {
-            font-size: 25px;
-            margin-top: 60px;
-        }
-
-        .reset-score-button{
-            background-color: transparent;
-            color: white;
-            border: 3px solid white;
-            border-radius: 20px;
-            font-size: 15px;
-            padding: 8px 15px;
-            cursor: pointer;
-        }
-    </style>
 </head>
+<link rel="stylesheet" href="./rps.css">
 
 <body>
     <h1 class="title">Rock paper Scissors</h1>
@@ -76,99 +30,7 @@
     document.querySelector('.js-moves').innerHTML = '';
     ">Reset Score</button>
 
-    <script>
-
-        let score = JSON.parse(localStorage.getItem('score')) || { wins: 0, losses: 0, tie: 0 };
-
-        updatescore();
-        diaplayResult();
-
-
-        /*
-        if (!score) {
-            score = {
-                wins: 0,
-                losses: 0,
-                tie: 0
-            }
-        }
-        */
-
-        function play(player) {
-            const machineMove = computerMove();
-            let result = '';
-
-            if (player === 'Rock') {
-
-                if (machineMove === 'Rock')
-                    result = 'Tie';
-                else if (machineMove === 'Paper')
-                    result = 'You Lose';
-                else
-                    result = 'You Won';
-
-            } else if (player === 'Paper') {
-
-                if (machineMove === 'Paper')
-                    result = 'Tie';
-                else if (machineMove === 'Scissors')
-                    result = 'You Lose';
-                else
-                    result = 'You Won';
-
-            } else {
-
-                if (machineMove === 'Scissors')
-                    result = 'Tie';
-                else if (machineMove === 'Rock')
-                    result = 'You Lose';
-                else
-                    result = 'You Won';
-            }
-
-            if (result === 'You Won')
-                score.wins++;
-            else if (result === 'You Lose')
-                score.losses++;
-            else
-                score.tie++;
-
-            localStorage.setItem('score', JSON.stringify(score));
-            updatescore();
-
-            document.querySelector('.js-result').innerHTML = result;
-            document.querySelector('.js-moves').innerHTML = ` You
-        <img class="move-icon" src="images/${player}-emoji.png" alt="">
-        <img class="move-icon" src="images/${machineMove}-emoji.png" alt="">
-        Computer`;
-
-            //             alert(`You : ${player}
-            // Machine : ${machineMove}
-            // ${result}
-            // Wins : ${score.wins} Losses : ${score.losses} Tie : ${score.tie}`);
-        }
-
-        function computerMove() {
-
-            const number = Math.random();
-            let machineMove = '';
-
-            if (number >= 0 && number < 1 / 3)
-                machineMove = 'Rock';
-            else if (number >= 1 / 3 && number < 2 / 3)
-                machineMove = 'Paper';
-            else
-                machineMove = 'Scissors';
-
-            return machineMove;
-        }
-
-        function updatescore() {
-            document.querySelector('.js-score').innerHTML = `Wins : ${score.wins}, Losses : ${score.losses}, Tie : ${score.tie}`;
-        }
-
-
-    </script>
+    <script src="scripts/rps.js"></script>
 </body>
 
 </html>

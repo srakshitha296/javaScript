@@ -5,126 +5,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
-    <style>
-        body {
-            background-color: black;
-            font-family: Arial;
-        }
-
-        button {
-            border-radius: 50%;
-            height: 60px;
-            width: 60px;
-            background-color: rgb(51, 51, 51);
-            border: none;
-            color: white;
-            margin-right: 5px;
-            font-size: 20px;
-            cursor: pointer;
-        }
-
-        .orange {
-            background-color: orange;
-        }
-    </style>
+    <link rel="stylesheet" href="./calculator.css">
 </head>
 
 <body>
+    <input class="js-result"></input>
+    <p>
+        <button class="ac" onclick="
+                calculation = ''
+                display();
+        ">AC</button>
+    </p>
     <p>
         <button onclick="
                     calculation += '1'
-                    console.log(calculation)
+                     display()
                 ">1
         </button>
         <button onclick="
                     calculation += '2'
-                    console.log(calculation)
+                     display()
                 ">2
         </button>
         <button onclick="
                     calculation += '3'
-                    console.log(calculation)
+                     display()
                 ">3
         </button>
         <button class="orange" onclick="
                     calculation += ' + '
-                    console.log(calculation)
+                     display()
                 ">+
         </button>
     </p>
     <p>
         <button onclick="
                         calculation += '4'
-                        console.log(calculation)
+                        display()
                     ">4
         </button>
         <button onclick="
                         calculation += '5'
-                        console.log(calculation)
+                         display()
                     ">5
         </button>
         <button onclick="
                         calculation += '6'
-                        console.log(calculation)
+                        display()
                     ">6
         </button>
         <button class="orange" onclick="
                         calculation += ' - '
-                        console.log(calculation)
+                         display()
                     ">-
         </button>
     </p>
     <p>
         <button onclick="
                             calculation += '7'
-                            console.log(calculation)
+                             display()
                         ">7
         </button>
         <button onclick="
                             calculation += '8'
-                            console.log(calculation)
+                             display()
                         ">8
         </button>
         <button onclick="
                             calculation += '9'
-                            console.log(calculation)
+                             display()
                         ">9
         </button>
         <button class="orange" onclick="
                             calculation += ' * '
-                            console.log(calculation)
+                             display()
                         ">*
         </button>
     </p>
     <p>
         <button onclick="
                                 calculation += '0'
-                                console.log(calculation)
+                                 display()
                             ">0
         </button>
         <button onclick="
                                 calculation += ' . '
-                                console.log(calculation)
+                                 display()
                             ">.
         </button>
         <button onclick="
                     calculation = eval(calculation)
-                    console.log(calculation)
+                    document.querySelector('.js-result').value=calculation;
                 ">=
         </button>
         <button class="orange" onclick="
                                 calculation += ' / '
-                                console.log(calculation)
+                                 display()
                             ">/
         </button>
     </p>
 
-    <button onclick="
-            calculation = '';
-        ">AC</button>
 
     <script>
         let calculation = '';
+        function display(){
+            document.querySelector('.js-result').value = calculation
+        }
     </script>
 
 </body>
