@@ -1,7 +1,7 @@
 const taskList = [
     {
         name: 'Learn Javascript',
-        date: '22-07-2025'        
+        date: '22-07-2025'
     },
     {
         name: 'Learn Node.js',
@@ -17,7 +17,7 @@ function todo() {
     const taskDate = inputElement_date.value;
 
     taskList.push({
-        name:taskName,
+        name: taskName,
         date: taskDate
     });
 
@@ -34,14 +34,13 @@ function renderToDoList() {
     for (let i = 0; i < taskList.length; i++) {
         const listObject = taskList[i];
         const html = `
-        <p>
-            <input type="text" value="${listObject.name}">
-            <input type="text" value="${listObject.date}">
-            <button onclick = "
-                taskList.splice(${i}, 1)
-                renderToDoList();"
-            >Delete</button><br>
-        </p>`;
+        <div class="display-name">${listObject.name}</div>
+        <div class="display-due-date">${listObject.date}</div>
+        <button class="delete-button" onclick = "
+            taskList.splice(${i}, 1)
+            renderToDoList();"
+        >Delete</button>
+        `;
         htmlCode += html;
     }
 
